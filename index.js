@@ -35,5 +35,3 @@ function operate(operator, a, b) {
       break;
   }
 }
-
-console.log(operate("/",2,3))
