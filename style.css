@@ -17,6 +17,29 @@ body {
 #display {
   background-color: #dedede;
   flex: 2;
+  display: flex;
+  flex-direction: column;
+}
+.previousCalculationsDisplay{
+    flex: 1;
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.previousCalculationRow{
+    flex: 1;
+    border-bottom:  2px dashed #aeaeae;;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.previousCalculationRow:last-child{
+    border-bottom: none;
+}
+.currentCalculationsDisplay{
+    padding: 8px;
+    border-top: 2px solid #aeaeae;
 }
 #keyContainer {
   background-color: #aeaeae;
@@ -25,7 +48,6 @@ body {
   display: flex;
   flex-direction: column;
 }
-
 .keyRow{
     flex: 1;
     display: flex;
