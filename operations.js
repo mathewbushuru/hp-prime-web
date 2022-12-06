@@ -3,12 +3,15 @@
 function add(a, b) {
   return a + b;
 }
+
 function subtract(a, b) {
   return a - b;
 }
+
 function multiply(a, b) {
   return a * b;
 }
+
 function divide(a, b) {
   return a / b;
 }
@@ -31,6 +34,7 @@ function operate(operator, a, b) {
       break;
     default:
       console.log(`${operator} operation not available`);
+      return;
       break;
   }
 }
@@ -85,7 +89,7 @@ function keyButtonPressed(e) {
   }
   switch (keyPressedText) {
     case "Enter":
-      result = calculateResult1();
+      result = calculateResult(currentCalculations.textContent);
       updatedPreviousCalculationRowsArray.shift();
       updatedPreviousCalculationRowsArray.push([
         `${currentCalculations.textContent}`,
@@ -101,48 +105,54 @@ function keyButtonPressed(e) {
     case "*":
     case "-":
     case "+":
-      if (num1) {
-        //two or more operators
-        operator = keyPressedText;
-        currentCalculations.textContent += keyPressedText;
-      } else {
-        operator = keyPressedText;
-        num1 = currentCalculations.textContent;
-        currentCalculations.textContent += keyPressedText;
-      }
+      currentCalculations.textContent += keyPressedText;
       break;
     default:
       currentCalculations.textContent += keyPressedText;
       break;
   }
-  console.log(`Num 1: ${num1}`);
-  console.log(`Num 2: ${num2}`);
-  console.log(`operator: ${operator}`);
-  console.log(`result: ${result}`);
-  console.log(currentCalculations.textContent);
 }
 
-function calculateResult1() {
-  console.log(`num1: ${num1}`);
-  if (num1) {
+function calculateResult(expression) {
+  let expressionArr = expression.split(""); //['3', '+', '2', '+', '5']
+  let isOperatorArr = expressionArr.map((i) => isNaN(i)); //[false, true, false, true, false]
+  let num1 = "";
+  let num2 = "";
+  let index = 0;
+  let operator;
+  let result;
+  for (; index < isOperatorArr.length; index++) {
+    if (isOperatorArr[index]) {
+      break;
+    }
+    num1 += expressionArr[index];
+  }
+  operator = expressionArr[index];
+  index += 1;
+  for (; index < isOperatorArr.length; index++) {
+    if (isOperatorArr[index]) {
+      break;
+    }
+    num2 += expressionArr[index];
+  }
+  if (!num2) {
+    //no operator in expression
+    return num1;
+  }
+  result = operate(operator, num1, num2);
+  while (index < isOperatorArr.length) {
+    //more than 2 operators
+    operator = expressionArr[index];
+    index += 1;
+    num1 = result;
     num2 = "";
-    for (
-      let i = num1.length + 1;
-      i < currentCalculations.textContent.length;
-      i++
-    ) {
-      num2 += currentCalculations.textContent[i];
+    for (; index < isOperatorArr.length; index++) {
+      if (isOperatorArr[index]) {
+        break;
+      }
+      num2 += expressionArr[index];
     }
     result = operate(operator, num1, num2);
-    result = String(result);
-  } else {
-    num1 = currentCalculations.textContent;
-    result = num1;
   }
-  console.log(`num2: ${num2}`);
   return result;
-}
-
-function calculateResult(){
-  console.log("new  string evaluation")
 }
