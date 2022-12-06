@@ -143,6 +143,10 @@ function calculateResult(expression) {
   let result;
   for (; index < isOperatorArr.length; index++) {
     if (isOperatorArr[index]) {
+      if (expressionArr[index] === ".") {
+        num1 += expressionArr[index];
+        continue;
+      }
       break;
     }
     num1 += expressionArr[index];
