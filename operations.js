@@ -85,7 +85,6 @@ function keyButtonPressed(e) {
   let keyPressedText;
   if (e.type === "keypress") {
     keyPressedText = e.key;
-    console.log(keyPressedText)
   } else {
     keyPressedText = e.target.textContent;
   }
@@ -162,6 +161,10 @@ function calculateResult(expression) {
   index += 1;
   for (; index < isOperatorArr.length; index++) {
     if (isOperatorArr[index]) {
+      if (expressionArr[index] === ".") {
+        num2 += expressionArr[index];
+        continue;
+      }
       break;
     }
     num2 += expressionArr[index];
@@ -179,11 +182,16 @@ function calculateResult(expression) {
     num2 = "";
     for (; index < isOperatorArr.length; index++) {
       if (isOperatorArr[index]) {
+        if (expressionArr[index] === ".") {
+          num2 += expressionArr[index];
+          continue;
+        }
         break;
       }
       num2 += expressionArr[index];
     }
     result = operate(operator, num1, num2);
   }
+  result = Math.floor(result * 10000) / 10000;
   return result;
 }
