@@ -2,27 +2,41 @@
 
 const display = document.getElementById("display");
 
-const previousCalculationsDisplay = document.createElement("div");
-previousCalculationsDisplay.className = "previousCalculationsDisplay";
-// previousCalculationsDisplay.textContent = "previous  calculations";
-let previousCalculationRows = [
-  [" 1 + 2 ", "3"],
-  [" 1 + 2 ", "3"],
-  [" 1 + 2 ", "3"],
-  [" 1 + 2 ", "3"],
-  [" 1 + 2 ", "3"],
-  [" 1 + 2 ", "3"],
-  [" 1 + 2 ", "3"],
-  [" 1 + 2 ", "3"],
-  [" 1 + 2 ", "3"],
-];
-for (let row of previousCalculationRows) {
-  let previousCalculationRow = document.createElement("div");
-  previousCalculationRow.className = "previousCalculationRow";
-  previousCalculationRow.innerHTML = `<span>${row[0]}</span> <span>= ${row[1]}</span>`;
-  previousCalculationsDisplay.appendChild(previousCalculationRow);
+// let previousCalculationRowsArray = [
+//   [" 1 + 2 ", "3"],
+//   [" 1 + 2 ", "3"],
+//   [" 1 + 2 ", "3"],
+//   [" 1 + 2 ", "3"],
+//   [" 1 + 2 ", "3"],
+//   [" 1 + 2 ", "3"],
+//   [" 1 + 2 ", "3"],
+//   [" 1 + 2 ", "3"],
+//   [" 1 + 2 ", "3"],
+// ];
+let previousCalculationRowsArray = [
+    ["   ", " "],
+    ["  ", "  "],
+    ["  ", " "],
+    ["  ", " "],
+    ["  ", " "],
+    ["  ", " "],
+    ["  ", " "],
+    ["  ", " "],
+    ["  ", " "],
+  ];
+function renderPreviousCalculations(previousCalculationRowsArray) {
+  const display = document.getElementById("display");
+  const previousCalculationsDisplay = document.createElement("div");
+  previousCalculationsDisplay.className = "previousCalculationsDisplay";
+  for (let row of previousCalculationRowsArray) {
+    let previousCalculationRow = document.createElement("div");
+    previousCalculationRow.className = "previousCalculationRow";
+    previousCalculationRow.innerHTML = `<span>${row[0]}</span> <span> ${row[1]}</span>`;
+    previousCalculationsDisplay.appendChild(previousCalculationRow);
+  }
+  display.appendChild(previousCalculationsDisplay);
 }
-display.appendChild(previousCalculationsDisplay);
+renderPreviousCalculations(previousCalculationRowsArray)
 
 const currentCalculationsDisplay = document.createElement("div");
 currentCalculationsDisplay.className = "currentCalculationsDisplay";
