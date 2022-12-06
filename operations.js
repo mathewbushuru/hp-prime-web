@@ -7,7 +7,6 @@ function subtract(a, b) {
   return a - b;
 }
 function multiply(a, b) {
-  console.log(`${a}*${b} = ${a * b}`);
   return a * b;
 }
 function divide(a, b) {
@@ -15,7 +14,6 @@ function divide(a, b) {
 }
 
 function operate(operator, a, b) {
-  console.log(`a: ${a},b: ${b}`);
   a = Number(a);
   b = Number(b);
   switch (operator) {
@@ -45,8 +43,9 @@ allKeyButtons.forEach((keyButton) => {
 const currentCalculations = document.querySelector(
   ".currentCalculationsDisplay"
 );
+
 let updatedPreviousCalculationRowsArray = [
-  [" 1  ", " 3"],
+  ["  ", " "],
   ["  ", "  "],
   ["  ", " "],
   ["  ", " "],
@@ -56,6 +55,7 @@ let updatedPreviousCalculationRowsArray = [
   ["  ", " "],
   [" ", " "],
 ];
+
 function updatePreviousCalculations(previousCalculationRowsArray) {
   const display = document.getElementById("display");
   let currentCalculationsDisplay = document.querySelector(
@@ -75,7 +75,9 @@ function updatePreviousCalculations(previousCalculationRowsArray) {
   }
   display.insertBefore(previousCalculationsDisplay, currentCalculationsDisplay);
 }
+
 let num1, num2, operator, result;
+
 function keyButtonPressed(e) {
   const keyPressedText = e.target.textContent;
   if (currentCalculations.textContent === "Enter expression to calculate") {
@@ -83,21 +85,7 @@ function keyButtonPressed(e) {
   }
   switch (keyPressedText) {
     case "Enter":
-      if (num1) {
-        num2 = "";
-        for (
-          let i = num1.length + 1;
-          i < currentCalculations.textContent.length;
-          i++
-        ) {
-          num2 += currentCalculations.textContent[i];
-        }
-        result = operate(operator, num1, num2);
-        result = String(result);
-      } else {
-        num1 = currentCalculations.textContent;
-        result = num1;
-      }
+      result = calculateResult1();
       updatedPreviousCalculationRowsArray.shift();
       updatedPreviousCalculationRowsArray.push([
         `${currentCalculations.textContent}`,
@@ -105,25 +93,56 @@ function keyButtonPressed(e) {
       ]);
       updatePreviousCalculations(updatedPreviousCalculationRowsArray);
       currentCalculations.textContent = "";
+      num1 = null;
+      num2 = null;
+      operator = null;
       break;
     case "/":
     case "*":
     case "-":
     case "+":
-      operator = keyPressedText;
-      num1 = currentCalculations.textContent;
-      currentCalculations.textContent += keyPressedText;
+      if (num1) {
+        //two or more operators
+        operator = keyPressedText;
+        currentCalculations.textContent += keyPressedText;
+      } else {
+        operator = keyPressedText;
+        num1 = currentCalculations.textContent;
+        currentCalculations.textContent += keyPressedText;
+      }
       break;
     default:
       currentCalculations.textContent += keyPressedText;
       break;
   }
-  // currentCalculations.textContent += keyPressedText;
   console.log(`Num 1: ${num1}`);
   console.log(`Num 2: ${num2}`);
   console.log(`operator: ${operator}`);
   console.log(`result: ${result}`);
   console.log(currentCalculations.textContent);
-  if (num2) {
+}
+
+function calculateResult1() {
+  console.log(`num1: ${num1}`);
+  if (num1) {
+    num2 = "";
+    for (
+      let i = num1.length + 1;
+      i < currentCalculations.textContent.length;
+      i++
+    ) {
+      num2 += currentCalculations.textContent[i];
+    }
+    result = operate(operator, num1, num2);
+    result = String(result);
+  } else {
+    num1 = currentCalculations.textContent;
+    result = num1;
   }
+  console.log(`num2: ${num2}`);
+  return result;
+}
+
+function calculateResult(){
+  console.log("new  string evaluation")
 }
