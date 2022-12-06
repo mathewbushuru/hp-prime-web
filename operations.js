@@ -85,7 +85,7 @@ function keyButtonPressed(e) {
   let keyPressedText;
   if (e.type === "keypress") {
     keyPressedText = e.key;
-    console.log(keyPressedText)
+    console.log(keyPressedText);
   } else {
     keyPressedText = e.target.textContent;
   }
@@ -185,5 +185,6 @@ function calculateResult(expression) {
     }
     result = operate(operator, num1, num2);
   }
+  result = Math.floor(result * 10000) / 10000;
   return result;
 }
