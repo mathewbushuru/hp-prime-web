@@ -26,7 +26,7 @@ display.appendChild(previousCalculationsDisplay);
 
 const currentCalculationsDisplay = document.createElement("div");
 currentCalculationsDisplay.className = "currentCalculationsDisplay";
-currentCalculationsDisplay.textContent = "current  calculations";
+currentCalculationsDisplay.textContent = "Enter expression to calculate";
 display.appendChild(currentCalculationsDisplay);
 
 const keyContainer = document.getElementById("keyContainer");

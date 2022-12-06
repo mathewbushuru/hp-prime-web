@@ -40,6 +40,7 @@ body {
 .currentCalculationsDisplay{
     padding: 8px;
     border-top: 2px solid #aeaeae;
+    text-align: end;
 }
 #keyContainer {
   background-color: #aeaeae;
@@ -60,6 +61,11 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+.keyButton:hover{
+    /* background-color: red; */
+    transition:0.2s;
+    scale: 1.12;
 }
 
 @media screen and (min-width: 600px) {

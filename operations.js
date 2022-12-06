@@ -3,15 +3,12 @@
 function add(a, b) {
   return a + b;
 }
-
 function subtract(a, b) {
   return a - b;
 }
-
 function multiply(a, b) {
   return a * b;
 }
-
 function divide(a, b) {
   return a / b;
 }
@@ -34,4 +31,22 @@ function operate(operator, a, b) {
       console.log(`${operator} operation not available`);
       break;
   }
+}
+
+const allKeyButtons = document.querySelectorAll(".keyButton");
+allKeyButtons.forEach((keyButton) => {
+  keyButton.addEventListener("click", keyButtonPressed);
+});
+
+const currentCalculations = document.querySelector(
+  ".currentCalculationsDisplay"
+);
+
+function keyButtonPressed(e) {
+  const keyPressedText = e.target.textContent;
+  if (currentCalculations.textContent === "Enter expression to calculate") {
+    currentCalculations.textContent = "";
+  }
+  currentCalculations.textContent += keyPressedText;
+  console.log(currentCalculations.textContent)
 }
