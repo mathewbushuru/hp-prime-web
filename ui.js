@@ -3,16 +3,16 @@
 const display = document.getElementById("display");
 
 let previousCalculationRowsArray = [
-    ["   ", " "],
-    ["  ", "  "],
-    ["  ", " "],
-    ["  ", " "],
-    ["  ", " "],
-    ["  ", " "],
-    ["  ", " "],
-    ["  ", " "],
-    ["  ", " "],
-  ];
+  ["   ", " "],
+  ["  ", "  "],
+  ["  ", " "],
+  ["  ", " "],
+  ["  ", " "],
+  ["  ", " "],
+  ["  ", " "],
+  ["  ", " "],
+  ["  ", " "],
+];
 function renderPreviousCalculations(previousCalculationRowsArray) {
   const display = document.getElementById("display");
   const previousCalculationsDisplay = document.createElement("div");
@@ -25,7 +25,7 @@ function renderPreviousCalculations(previousCalculationRowsArray) {
   }
   display.appendChild(previousCalculationsDisplay);
 }
-renderPreviousCalculations(previousCalculationRowsArray)
+renderPreviousCalculations(previousCalculationRowsArray);
 
 const currentCalculationsDisplay = document.createElement("div");
 currentCalculationsDisplay.className = "currentCalculationsDisplay";
@@ -51,3 +51,7 @@ for (let row of keyRows) {
   }
   keyContainer.appendChild(keyRow);
 }
+
+//To deal with issues with mobile viewport(safari+chrome)
+let vh = window.innerHeight * 0.01;
+document.documentElement.style.setProperty("--vh", `${vh}px`);

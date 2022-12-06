@@ -7,11 +7,13 @@ body {
   margin: 0;
   padding: 0;
   background-color: #aeaeae;
+  display: flex;
 }
 #calculatorContainer {
   height: 100vh;
+  height: calc(var(--vh, 1vh) * 100);
   width: 100vw;
-  overflow: hidden;
+  flex: 1;
   display: flex;
   flex-direction: column;
   background-color: #dedede;
@@ -65,10 +67,10 @@ body {
   justify-content: center;
   align-items: center;
 }
-.keyButton:hover{
-    transition:0.2s;
-    background-color: #cecece;
-    /* scale: 1.12; */
+.keyButton:hover {
+  transition: 0.2s;
+  background-color: #cecece;
+  /* scale: 1.12; */
 }
 
 @media screen and (min-width: 600px) {

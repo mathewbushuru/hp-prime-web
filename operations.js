@@ -85,6 +85,7 @@ function keyButtonPressed(e) {
   let keyPressedText;
   if (e.type === "keypress") {
     keyPressedText = e.key;
+    console.log(keyPressedText)
   } else {
     keyPressedText = e.target.textContent;
   }
