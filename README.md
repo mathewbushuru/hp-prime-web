@@ -12,5 +12,7 @@ I'm currently developing it using vanilla javascript but will convert it to a re
 
 
 ## Roadmap
-- add single digit delete button
+- add decimal button
+- add backspace button
 - Trig functions 
+- Shift button and  multi-functional buttons
