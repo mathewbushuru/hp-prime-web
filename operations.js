@@ -80,16 +80,29 @@ function updatePreviousCalculations(previousCalculationRowsArray) {
   display.insertBefore(previousCalculationsDisplay, currentCalculationsDisplay);
 }
 
-let num1, num2, operator, result;
-
 function keyButtonPressed(e) {
   const keyPressedText = e.target.textContent;
   if (currentCalculations.textContent === "Enter expression to calculate") {
     currentCalculations.textContent = "";
   }
   switch (keyPressedText) {
+    case "Clear":
+      currentCalculations.textContent = "";
+      updatedPreviousCalculationRowsArray = [
+        ["  ", " "],
+        ["  ", "  "],
+        ["  ", " "],
+        ["  ", " "],
+        ["  ", " "],
+        ["  ", " "],
+        ["  ", " "],
+        ["  ", " "],
+        [" ", " "],
+      ];
+      updatePreviousCalculations(updatedPreviousCalculationRowsArray);
+      break;
     case "Enter":
-      result = calculateResult(currentCalculations.textContent);
+      let result = calculateResult(currentCalculations.textContent);
       updatedPreviousCalculationRowsArray.shift();
       updatedPreviousCalculationRowsArray.push([
         `${currentCalculations.textContent}`,
@@ -97,9 +110,6 @@ function keyButtonPressed(e) {
       ]);
       updatePreviousCalculations(updatedPreviousCalculationRowsArray);
       currentCalculations.textContent = "";
-      num1 = null;
-      num2 = null;
-      operator = null;
       break;
     case "/":
     case "*":

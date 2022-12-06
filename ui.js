@@ -2,17 +2,6 @@
 
 const display = document.getElementById("display");
 
-// let previousCalculationRowsArray = [
-//   [" 1 + 2 ", "3"],
-//   [" 1 + 2 ", "3"],
-//   [" 1 + 2 ", "3"],
-//   [" 1 + 2 ", "3"],
-//   [" 1 + 2 ", "3"],
-//   [" 1 + 2 ", "3"],
-//   [" 1 + 2 ", "3"],
-//   [" 1 + 2 ", "3"],
-//   [" 1 + 2 ", "3"],
-// ];
 let previousCalculationRowsArray = [
     ["   ", " "],
     ["  ", "  "],
@@ -45,11 +34,11 @@ display.appendChild(currentCalculationsDisplay);
 
 const keyContainer = document.getElementById("keyContainer");
 const keyRows = [
-  ["Clear", "^", "( )", "Enter"],
+  ["Clear", " ", " ", "Enter"],
   ["7", "8", "9", "/"],
   ["4", "5", "6", "*"],
   ["1", "2", "3", "-"],
-  ["0", ".", "+/-", "+"],
+  ["0", " ", " ", "+"],
 ];
 for (let row of keyRows) {
   let keyRow = document.createElement("div");
