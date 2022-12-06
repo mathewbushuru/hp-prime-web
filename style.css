@@ -8,8 +8,11 @@ body {
   padding: 0;
 }
 #calculatorContainer {
-  height: 100vh;
-  width: 100vw;
+  min-height: 100vh;
+  min-width: 100vw;
+  max-height: 100vh;
+  max-width: 100vw;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
   background-color: #dedede;
@@ -20,27 +23,27 @@ body {
   display: flex;
   flex-direction: column;
 }
-.previousCalculationsDisplay{
-    flex: 1;
-    padding: 8px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+.previousCalculationsDisplay {
+  flex: 1;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
-.previousCalculationRow{
-    flex: 1;
-    border-bottom:  2px dashed #aeaeae;;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.previousCalculationRow {
+  flex: 1;
+  border-bottom: 2px dashed #aeaeae;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
-.previousCalculationRow:last-child{
-    border-bottom: none;
+.previousCalculationRow:last-child {
+  border-bottom: none;
 }
-.currentCalculationsDisplay{
-    padding: 8px;
-    border-top: 2px solid #aeaeae;
-    text-align: end;
+.currentCalculationsDisplay {
+  padding: 8px;
+  border-top: 2px solid #aeaeae;
+  text-align: end;
 }
 #keyContainer {
   background-color: #aeaeae;
@@ -49,23 +52,24 @@ body {
   display: flex;
   flex-direction: column;
 }
-.keyRow{
-    flex: 1;
-    display: flex;
+.keyRow {
+  flex: 1;
+  display: flex;
 }
-.keyButton{
-    background-color: #dedede;
-    margin: 8px;
-    border-radius: 8px;
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.keyButton {
+  background-color: #dedede;
+  margin: 8px;
+  border-radius: 8px;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-/* .keyButton:hover{
+.keyButton:hover{
     transition:0.2s;
-    scale: 1.12;
-} */
+    background-color: #cecece;
+    /* scale: 1.12; */
+}
 
 @media screen and (min-width: 600px) {
   #calculatorContainer {
