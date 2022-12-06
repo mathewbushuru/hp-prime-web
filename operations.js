@@ -113,6 +113,16 @@ function keyButtonPressed(e) {
       break;
     case "/":
     case "*":
+      // update when BODMAS is implemented
+      let intermediateResult = calculateResult(currentCalculations.textContent);
+      updatedPreviousCalculationRowsArray.shift();
+      updatedPreviousCalculationRowsArray.push([
+        `${currentCalculations.textContent}`,
+        `${intermediateResult}`,
+      ]);
+      updatePreviousCalculations(updatedPreviousCalculationRowsArray);
+      currentCalculations.textContent = `${intermediateResult} ${keyPressedText} `;
+      break;
     case "-":
     case "+":
       currentCalculations.textContent += keyPressedText;
@@ -150,8 +160,8 @@ function calculateResult(expression) {
     return num1;
   }
   result = operate(operator, num1, num2);
+  // more than 2 operators
   while (index < isOperatorArr.length) {
-    //more than 2 operators
     operator = expressionArr[index];
     index += 1;
     num1 = result;
