@@ -9,10 +9,8 @@ body {
   background-color: #aeaeae;
 }
 #calculatorContainer {
-  min-height: 96vh;
-  min-width: 96vw;
-  max-height: 96vh;
-  max-width: 96vw;
+  height: 100vh;
+  width: 100vw;
   overflow: hidden;
   display: flex;
   flex-direction: column;

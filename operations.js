@@ -43,6 +43,7 @@ const allKeyButtons = document.querySelectorAll(".keyButton");
 allKeyButtons.forEach((keyButton) => {
   keyButton.addEventListener("click", keyButtonPressed);
 });
+window.addEventListener("keypress", keyButtonPressed);
 
 const currentCalculations = document.querySelector(
   ".currentCalculationsDisplay"
@@ -81,7 +82,12 @@ function updatePreviousCalculations(previousCalculationRowsArray) {
 }
 
 function keyButtonPressed(e) {
-  const keyPressedText = e.target.textContent;
+  let keyPressedText;
+  if (e.type === "keypress") {
+    keyPressedText = e.key;
+  } else {
+    keyPressedText = e.target.textContent;
+  }
   if (currentCalculations.textContent === "Enter expression to calculate") {
     currentCalculations.textContent = "";
   }
@@ -121,7 +127,7 @@ function keyButtonPressed(e) {
         `${intermediateResult}`,
       ]);
       updatePreviousCalculations(updatedPreviousCalculationRowsArray);
-      currentCalculations.textContent = `${intermediateResult} ${keyPressedText} `;
+      currentCalculations.textContent = `${intermediateResult}${keyPressedText}`;
       break;
     case "-":
     case "+":
